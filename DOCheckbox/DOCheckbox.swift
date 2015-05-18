@@ -12,13 +12,13 @@
 import UIKit
 
 enum DOCheckboxStyle : Int {
-    case Default // Rect
+    case Default
     case Square
-    case SquareFill
+    case FilledSquare
     case RoundedSquare
-    case RoundedSquareFill
+    case FilledRoundedSquare
     case Circle
-    case CircleFill
+    case FilledCircle
 }
 
 class DOCheckbox: UIButton {
@@ -165,24 +165,28 @@ class DOCheckbox: UIButton {
             self.baseColor = baseColor!
         }
         
-        // checkbox
+        // checkbox style
         switch (self.style!) {
-        case .Default, .Square, .SquareFill:
+        case .Default:
+            checkboxBorderWidth = 0
+            checkboxCornerRadius = 0
+            
+        case .Square, .FilledSquare:
             checkboxBorderWidth = round(5 * ratio * 10) / 10
             checkboxCornerRadius = 0
             
-        case .RoundedSquare, .RoundedSquareFill:
+        case .RoundedSquare, .FilledRoundedSquare:
             checkboxBorderWidth = round(5 * ratio * 10) / 10
             checkboxCornerRadius = round(15 * ratio * 10) / 10
             
-        case .Circle, .CircleFill:
+        case .Circle, .FilledCircle:
             checkboxBorderWidth = round(5 * ratio * 10) / 10
             checkboxCornerRadius = round(50 * ratio * 10) / 10
         }
         
-        // check
+        // check style
         switch (self.style!) {
-        case .Default, .Square, .SquareFill, .RoundedSquare, .RoundedSquareFill, .Circle, .CircleFill:
+        case .Default, .Square, .FilledSquare, .RoundedSquare, .FilledRoundedSquare, .Circle, .FilledCircle:
             checkWidth = round(15 * ratio * 10) / 10
             checkBgLayer.path = {
                 let path = CGPathCreateMutable()
@@ -210,9 +214,9 @@ class DOCheckbox: UIButton {
             checkboxBgColor = UIColor.whiteColor()
             checkboxBorderColor = self.baseColor
             checkColor = self.baseColor
-            checkBgColor = convertColor(self.baseColor, toColor: UIColor.whiteColor(), percent: 0.8)
+            checkBgColor = convertColor(self.baseColor, toColor: UIColor.whiteColor(), percent: 0.85)
             
-        case .SquareFill, .RoundedSquareFill, .CircleFill:
+        case .FilledSquare, .FilledRoundedSquare, .FilledCircle:
             checkboxBgColor = self.baseColor
             checkboxBorderColor = self.baseColor
             checkColor = UIColor.whiteColor()

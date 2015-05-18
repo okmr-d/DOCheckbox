@@ -16,6 +16,7 @@ class ParentViewController: UITableViewController, UITextFieldDelegate  {
         return [
             // Alert style alerts.
             [
+                self.showDefault,
                 self.showSquare,
                 self.showSquareFill,
                 self.showRoundedSquare,
@@ -30,13 +31,18 @@ class ParentViewController: UITableViewController, UITextFieldDelegate  {
         ]
     }
     
-    func showSquare(_: NSIndexPath) {
+    func showDefault(_: NSIndexPath) {
         self.style = .Default
         self.performSegueWithIdentifier("showChildView", sender:self)
     }
     
+    func showSquare(_: NSIndexPath) {
+        self.style = .Square
+        self.performSegueWithIdentifier("showChildView", sender:self)
+    }
+    
     func showSquareFill(_: NSIndexPath) {
-        self.style = .SquareFill
+        self.style = .FilledSquare
         self.performSegueWithIdentifier("showChildView", sender:self)
     }
     
@@ -46,7 +52,7 @@ class ParentViewController: UITableViewController, UITextFieldDelegate  {
     }
     
     func showRoundedSquareFill(_: NSIndexPath) {
-        self.style = .RoundedSquareFill
+        self.style = .FilledRoundedSquare
         self.performSegueWithIdentifier("showChildView", sender:self)
     }
     
@@ -56,7 +62,7 @@ class ParentViewController: UITableViewController, UITextFieldDelegate  {
     }
     
     func showCircleFill(_: NSIndexPath) {
-        self.style = .CircleFill
+        self.style = .FilledCircle
         self.performSegueWithIdentifier("showChildView", sender:self)
     }
     

@@ -12,12 +12,13 @@ class ChildViewController: UIViewController {
     
     var style: DOCheckboxStyle = .Default
     let titleStr: [DOCheckboxStyle : String] = [
-        .Default            : "Square (Default)",
-        .SquareFill         : "SquareFill",
+        .Default            : "Default",
+        .Square             : "Square",
+        .FilledSquare       : "FilledSquare",
         .RoundedSquare      : "RoundedSquare",
-        .RoundedSquareFill  : "RoundedSquareFill",
+        .FilledRoundedSquare: "FilledRoundedSquare",
         .Circle             : "Circle",
-        .CircleFill         : "CircleFill"]
+        .FilledCircle       : "FilledCircle"]
     var checkboxList: [DOCheckbox] = []
     let checkboxSizeList: [CGFloat] = [10.0, 15.0, 20.0, 25.0, 30.0, 35.0, 40.0, 45.0, 50.0]
     
